@@ -61,7 +61,7 @@ def create_app():
             else:
                 print("%s n'est pas dans le périmètre" %(cle)) 
                 
-        return jsonify( result=mescoord["lalongitude"], result1=mescoord["lalatitude"]) #on pas les coord à l'app
+        return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
 
 
 
