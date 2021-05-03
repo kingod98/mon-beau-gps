@@ -61,31 +61,32 @@ def stuff():
             
     return jsonify( result=mescoord["lalongitude"], result1=mescoord["lalatitude"]) #on pas les coord à l'app
 """
+def create_app():
 
-@app.route('/_stuff1', methods = ['GET'])
-def stuff1():
-    global a #!!!!!!!!!!!! si on veut la changer, la rendre globale dans la fonction !!!!!!!!!!!!!!!!!!!!!!
-    return jsonify(result=random.uniform(3,4),result1=random.uniform(43,44))
+    app = Flask(__name__)
+
+    @app.route('/_stuff1', methods = ['GET'])
+    def stuff1():
+        global a #!!!!!!!!!!!! si on veut la changer, la rendre globale dans la fonction !!!!!!!!!!!!!!!!!!!!!!
+        return jsonify(result=random.uniform(3,4),result1=random.uniform(43,44))
 
 
-@app.route('/')
-def index():
-   
-    return render_template('map2v3.html')
-
- 
-@app.route('/map')
-def map():
+    @app.route('/')
+    def index():
     
-    return render_template('1km.html')
-"""
-@app.route('/refresh')
-def refresh():
-    
-    return render_template('test.html')
-"""
+        return render_template('map2v3.html')
 
-if __name__ == '__main__':
     
-    app.run(debug=True)
+    @app.route('/map')
+    def map():
+        
+        return render_template('1km.html')
+    """
+    @app.route('/refresh')
+    def refresh():
+        
+        return render_template('test.html')
+    """
+    return app
+    
 
