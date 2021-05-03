@@ -143,7 +143,6 @@ pyRFC3339==1.1
 pyrsistent==0.17.3
 pyserial==3.5
 python-dateutil==1.5
-python-debian===0.1.36ubuntu1
 python-engineio==4.0.1
 python-socketio==5.1.0
 pytz==2019.3
