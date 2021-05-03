@@ -48,23 +48,23 @@ app.db = client.gpsapp
 entries = []
 """
 
-
+app = Flask(__name__)
+    
+@app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
+def stuff():
+        
+    getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
+        
+    for cle,valeur in perimetre.coord.items():
+        if geodesic(valeur, (mescoord["lalatitude"], mescoord["lalongitude"])).kilometers <= perimetre.radius :
+            print("%s est dans le périmètre" %(cle))
+        else:
+            print("%s n'est pas dans le périmètre" %(cle)) 
+                
+    return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
        
 def create_app():
-    app = Flask(__name__)
     
-    @app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
-    def stuff():
-        
-        getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
-        
-        for cle,valeur in perimetre.coord.items():
-            if geodesic(valeur, (mescoord["lalatitude"], mescoord["lalongitude"])).kilometers <= perimetre.radius :
-                print("%s est dans le périmètre" %(cle))
-            else:
-                print("%s n'est pas dans le périmètre" %(cle)) 
-                
-        return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
 
     @app.route('/')
     def index():
