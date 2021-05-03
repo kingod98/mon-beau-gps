@@ -1,0 +1,23 @@
+/*
+marche bien, séparation html css ok !
+*/
+
+body {
+    background: lightblue url("img_tree.gif") no-repeat fixed center;
+  }
+
+  .art-degrade h1 {
+    background: linear-gradient(to right, #36ecde, #000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+
+  #header1 img {
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+}
+
+
+#map {position: absolute; top: 300px; right: 800px; bottom: 0; left: 0;}

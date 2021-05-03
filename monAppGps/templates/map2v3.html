@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+    <link rel="stylesheet" href="../dist/leaflet.awesome-markers.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src="../dist/leaflet.awesome-markers.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/styles.css') }}" />  
+  </head>
+
+  <body onload="update_values();">
+    <div id="map"></div>
+    
+    <!--===============================================
+               Le script
+    ===============================================-->
+    
+    <script >
+        var intervalID = setInterval(update_values,500);
+           //askip mon block update fonction seulement si lancé avant la map            Mes variable globales
+        //var maPosition = null;
+        var myjson; //decl&arer la comme globale
+        var latLng;
+        //////////////////////////////////////////////////////////////////////////////:
+    
+        function update_values() {
+            $.getJSON($SCRIPT_ROOT + '/_stuff1',
+               
+                function(data) {
+                $('#result').text(data.result) 
+                $('#result1').text(data.result1)
+                 console.log(data); 
+                 latLng = [data.result1, data.result];     // la fameuse variable latlng !!! On va essayer de s'en servier pour .set
+                 myjson =data;
+                    dataready();
+                });
+        };
+
+        var map = L.map('map').setView([43,3], 7); //(la,lon,zoom)  
+     
+        L.tileLayer('https://api.maptiler.com/maps/toner/{z}/{x}/{y}.png?key=vla4kokt42kz0fo59w2O',{
+            tileSize: 512,
+            zoomOffset: -1,
+            minZoom: 1,
+            attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+            crossOrigin: true
+        }).addTo(map);
+
+    
+        var laBranche = L.icon({
+            iconUrl: '{{url_for('static', filename='bus.png')}}',
+            shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',//la ptite ombre pour la branche
+            iconSize: [100,50],
+            iconAnchor: [50,25],
+            shadowAnchor: [4,62],//pareil pour l'ombre
+            popupAnchor: [12,-90]//Pour bien placer la popup sur l'icon, pour bien voir la ptite branche
+        })
+
+        
+        var maPosition = L.marker([ 0 ,0],{icon: laBranche}).addTo(map) //J'initialise le marker 
+        window.alert("sometext");
+        var monPerimetre = L.circle([0, 0], {
+          color: 'red',
+          fillcolor: '#f03',
+          fillOpacity: 0.5,
+          radius: 27000
+            }).addTo(map)
+        //////////////////////////////////////////////////////////////////////////////////////La fonction lancée après réception de lon la
+        function dataready(){      
+        
+ 
+          L.tileLayer('https://api.maptiler.com/maps/toner/{z}/{x}/{y}.png?key=vla4kokt42kz0fo59w2O',{
+          tileSize: 512,
+          zoomOffset: -1,
+          minZoom: 1,
+          attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+          crossOrigin: true
+            }).addTo(map);
+          
+          maPosition.setLatLng(latLng);
+          monPerimetre.setLatLng(latLng);
+        }//C'est la fin de la fonction update
+        var busIcon = L.icon({
+            iconUrl: 'http://openstationmap.org/0.2.0/client/leaflet/images/marker-icon.png',
+        
+            iconSize:     [23, 29], 
+            iconAnchor:   [22, 94], 
+            popupAnchor:  [-3, -76] 
+        });
+        
+        function onZoomend(feature, layer) {
+            var currentZoom = map.getZoom();
+        	  if (currentZoom > 9) {
+        	    geojson.eachLayer(function(layer) {
+                  layer.setIcon(busIcon);
+                });
+        	  } 
+        };
+        
+       map.on('zoomend', onZoomend);
+
+    </script>
+
+  
+
+  <script type="module">
+  //voilà !!!La méthode pour importer mes choses
+  import {myGeoJSON} from "./static/js/mesPoint.js"
+  import {onEachFeature} from "./static/js/mesPoint.js"
+  L.geoJSON(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+  
+  
+  L.Control.Watermark = L.Control.extend({
+    onAdd: function(map) {
+        var img = L.DomUtil.create('img');
+        
+        img.src = '{{url_for('static', filename='logo.png')}}';
+        img.style.width = '250px';
+        
+        return img;
+    },
+    
+    onRemove: function(map) {
+        // Nothing to do here
+    }
+});
+
+L.control.watermark = function(opts) {
+    return new L.Control.Watermark(opts);
+}
+
+L.control.watermark({ position: 'bottomleft' }).addTo(map);
+
+ </script>
+
+
+<!--===============================================
+               Le non-map
+    ===============================================-->
+
+
+<h1>Notre gps sophistiqué</h1>
+
+  <h2>latitude:</h2>
+    <span id="result">?</span>
+  <h2>longitude:</h2>
+    <span id="result1">?</span>
+
+  </body>
+</html>
+
+
