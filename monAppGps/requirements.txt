@@ -184,7 +184,6 @@ trackanimation==1.0.5
 traitlets==5.0.5
 twine==3.4.1
 typescript==0.0.12
-ufw==0.36
 unattended-upgrades==0.1
 uritemplate==3.0.1
 urllib3==1.25.8
