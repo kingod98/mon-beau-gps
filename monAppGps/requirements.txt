@@ -142,7 +142,6 @@ pyproj==3.0.1
 pyRFC3339==1.1
 pyrsistent==0.17.3
 pyserial==3.5
-python-apt==2.0.0+ubuntu0.20.4.4
 python-dateutil==1.5
 python-debian===0.1.36ubuntu1
 python-engineio==4.0.1
