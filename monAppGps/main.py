@@ -38,6 +38,7 @@ from perimetre import *
 
 
 
+
 import pdb
 
 """
@@ -46,23 +47,25 @@ geolocator = Nominatim(user_agent="Nominatim")
 app.db = client.gpsapp
 entries = []
 """
-
-@app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
-def stuff():
-    
-    getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
-    
-    for cle,valeur in perimetre.coord.items():
-        if geodesic(valeur, (mescoord["lalatitude"], mescoord["lalongitude"])).kilometers <= perimetre.radius :
-            print("%s est dans le périmètre" %(cle))
-        else:
-            print("%s n'est pas dans le périmètre" %(cle)) 
-    #result=mescoord["lalongitude"], result1=mescoord["lalatitude"]        
-    return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
-
 def create_app():
-
     app = Flask(__name__)
+    
+    @app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
+    def stuff():
+        
+        getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
+        
+        for cle,valeur in perimetre.coord.items():
+            if geodesic(valeur, (mescoord["lalatitude"], mescoord["lalongitude"])).kilometers <= perimetre.radius :
+                print("%s est dans le périmètre" %(cle))
+            else:
+                print("%s n'est pas dans le périmètre" %(cle)) 
+                
+        return jsonify( result=mescoord["lalongitude"], result1=mescoord["lalatitude"]) #on pas les coord à l'app
+
+
+
+    
 
     @app.route('/_stuff1', methods = ['GET'])
     def stuff1():
