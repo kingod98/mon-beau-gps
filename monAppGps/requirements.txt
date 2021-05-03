@@ -21,7 +21,6 @@ Click==7.0
 click-plugins==1.1.1
 cligj==0.7.1
 colorama==0.4.3
-command-not-found==0.3
 cryptography==2.8
 cupshelpers==1.0
 cycler==0.10.0
