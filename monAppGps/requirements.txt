@@ -1,5 +1,4 @@
 affine==2.3.0
-gunicorn==20.0.4
 aniso8601==9.0.1
 anyio==2.2.0
 argon2-cffi==20.1.0
