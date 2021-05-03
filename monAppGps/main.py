@@ -35,7 +35,6 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 import perimetre
 from perimetre import *
-from pymongo import MongoClient
 
 
 
