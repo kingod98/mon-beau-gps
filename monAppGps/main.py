@@ -38,7 +38,7 @@ from perimetre import *
 from pymongo import MongoClient
 
 
-app = Flask(__name__)
+
 import pdb
 
 """
