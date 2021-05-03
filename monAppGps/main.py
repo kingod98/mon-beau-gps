@@ -46,7 +46,7 @@ geolocator = Nominatim(user_agent="Nominatim")
 app.db = client.gpsapp
 entries = []
 """
-"""
+
 @app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
 def stuff():
     
@@ -57,9 +57,9 @@ def stuff():
             print("%s est dans le périmètre" %(cle))
         else:
             print("%s n'est pas dans le périmètre" %(cle)) 
-            
-    return jsonify( result=mescoord["lalongitude"], result1=mescoord["lalatitude"]) #on pas les coord à l'app
-"""
+    #result=mescoord["lalongitude"], result1=mescoord["lalatitude"]        
+    return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
+
 def create_app():
 
     app = Flask(__name__)
