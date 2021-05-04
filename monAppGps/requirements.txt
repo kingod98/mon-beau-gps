@@ -1,17 +1,11 @@
-flask-googlemaps==0.4.1
-Flask-MQTT==1.1.1
-Flask-RESTful==0.3.8
-Flask-SocketIO==5.0.1
-folium==0.12.1
-future==0.18.2
-geographiclib==1.50
+
 geopandas==0.9.0
 geopy==2.1.0
 gmplot==1.4.1
 googleearthplot==0.0.2
-gpxpy==1.4.2
+
 heroku==0.1.4
-htmlmin==0.1.12
+
 importlib-metadata==3.10.0
 
 Jinja2==2.11.3
@@ -19,9 +13,8 @@ Jinja2==2.11.3
 json5==0.9.5
 jsonschema==3.2.0
 
-kiwisolver==1.3.1
 
-macaroonbakery==1.3.1
+
 mapbox==0.16.1
 mapboxcli==0.8.0
 
@@ -35,8 +28,7 @@ numpy==1.20.2
 plotly==4.14.3
 
 pyproj==3.0.1
-pyRFC3339==1.1
-pyrsistent==0.17.3
+
 pyserial==3.5
 
 
@@ -45,15 +37,8 @@ simplejson==3.16.0
 simplekml==1.3.5
 
 
-trackanimation==1.0.5
-traitlets==5.0.5
-twine==3.4.1
-typescript==0.0.12
-uritemplate==3.0.1
 
 
-Werkzeug==1.0.1
-wrapt==1.12.1
-zipp==3.4.1
+
 
 gunicorn
