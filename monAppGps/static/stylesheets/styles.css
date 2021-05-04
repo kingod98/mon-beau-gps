@@ -2,10 +2,6 @@
 marche bien, séparation html css ok !
 */
 
-body {
-    background: lightblue url("img_tree.gif") no-repeat fixed center;
-  }
-
   .art-degrade h1 {
     background: linear-gradient(to right, #36ecde, #000);
 	-webkit-background-clip: text;
@@ -30,6 +26,7 @@ body {
 		width: auto;
 		margin: 0;
 		padding: 0;
+		 background: lightblue url("img_tree.gif") no-repeat fixed center;
 	}
 	
 	/* fixer une largeur maximale de 100% aux éléments potentiellement problématiques */
