@@ -48,7 +48,7 @@ app.db = client.gpsapp
 entries = []
 """
 
-app = Flask(__name__)
+
 """
 @app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
 def stuff():
