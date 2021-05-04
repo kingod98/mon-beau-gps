@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <script type="text/javascript"
       src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -29,7 +30,7 @@
     <script >
       //import $ from 'jquery';
       
-        var intervalID = setInterval(update_values,500);
+        var intervalID = setInterval(update_values,1000);
            //askip mon block update fonction seulement si lancé avant la map            Mes variable globales
         //var maPosition = null;
         var myjson; //decl&arer la comme globale
@@ -71,7 +72,7 @@
 
         
         var maPosition = L.marker([ 0 ,0],{icon: laBranche}).addTo(map) //J'initialise le marker 
-        window.alert("sometext");
+        window.alert("Attention les yeux !");
         var monPerimetre = L.circle([0, 0], {
           color: 'red',
           fillcolor: '#f03',
