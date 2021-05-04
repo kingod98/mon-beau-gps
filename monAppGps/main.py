@@ -35,10 +35,10 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 import perimetre
 from perimetre import *
+#from pymongo import MongoClient
 
 
-
-
+app = Flask(__name__)
 import pdb
 
 """
@@ -49,39 +49,52 @@ entries = []
 """
 
 app = Flask(__name__)
-    
+"""
 @app.route('/_stuff', methods = ['GET']) #Flask via javascript appelle cette fonction périodiquement pour actualiser nos coordonnées
 def stuff():
+       
+    getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
         
-    #getGpsDatav3.main()   #cette fonction initialise et écrit les coordonnées dans le dictionnaire 
-    """    
     for cle,valeur in perimetre.coord.items():
         if geodesic(valeur, (mescoord["lalatitude"], mescoord["lalongitude"])).kilometers <= perimetre.radius :
             print("%s est dans le périmètre" %(cle))
         else:
             print("%s n'est pas dans le périmètre" %(cle)) 
-    """            
-    return jsonify( result=random.uniform(3,4),result1=random.uniform(43,44)) #on pas les coord à l'app
-       
-def create_app():
-    
-    app = Flask(__name__)
-    @app.route('/')
-    def index():
-    
-        return render_template('map2v3.html')
+              
+    return jsonify( result=mescoord["lalongitude"], result1=mescoord["lalatitude"]) #on pas les coord à l'app
+"""
 
     
-    @app.route('/map')
-    def map():
+
+
+    
+
+@app.route('/_stuff1', methods = ['GET'])
+def stuff1():
+    global a #!!!!!!!!!!!! si on veut la changer, la rendre globale dans la fonction !!!!!!!!!!!!!!!!!!!!!!
+    return jsonify(result=random.uniform(3,4),result1=random.uniform(43,44))
+
+
+@app.route('/')
+def index():
+    
+    return render_template('map2v3.html')
+
+    
+@app.route('/map')
+def map():
         
-        return render_template('1km.html')
-    """
-    @app.route('/refresh')
-    def refresh():
+    return render_template('1km.html')
+"""
+@app.route('/refresh')
+def refresh():
         
-        return render_template('test.html')
-    """
-    return app
+    return render_template('test.html')
+"""
+
+if __name__ == '__main__':
+    
+    app.run(debug=True)
+
     
 
