@@ -78,7 +78,7 @@ def stuff1():
 @app.route('/')
 def index():
     
-    return render_template('map2v3.html')
+    return render_template('map2v3.html', pub=pub_cible())
 
     
 @app.route('/map')
