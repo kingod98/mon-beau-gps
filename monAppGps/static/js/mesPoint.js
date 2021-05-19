@@ -14,6 +14,7 @@
 
 export { onEachFeature} 
 
+/*
  var myGeoJSON = {"type": "Feature", "features":
  
                         [{"type": "Feature", 
@@ -56,7 +57,64 @@ export { onEachFeature}
                      "geometry": {"type": "Point","coordinates": [3.6792865, 43.39280638]}, 
                    "properties": {"name": "corniche"}}
                    ]
-} 
+} */
 
+
+
+
+var myGeoJSON = 
+
+
+  {"type":"Feature","features":
+
+    [{"type":"Feature",
+    "id":"f86c97ac-4980-44f5-9e23-7254c56a6eb5",
+    "geometry":{"type":"Point","coordinates":[3.81468603,43.61202399]},
+    "properties":{"name":"9"}},
+    
+    {"type":"Feature",
+    "id":"ddd3ba5a-574f-4fd4-baf0-e09c37ae41e1",
+    "geometry":{"type":"Point","coordinates":[3.81606118,43.61343086]},
+    "properties":{"name":"10"}},
+    
+    {"type":"Feature",
+    "id":"76dcc3a3-aae3-4f83-8eaa-64bff775b74c",
+    "geometry":{"type":"Point","coordinates":[3.81075562,43.61391128]},
+    "properties":{"name":"3"}},
+    
+    {"type":"Feature",
+    "id":"8dc4a410-d852-4dac-b458-2b3c1438500c",
+    "geometry":{"type":"Point","coordinates":[3.812713,43.61007596]},
+    "properties":{"name":"6"}},
+    
+    {"type":"Feature",
+    "id":"db7f6000-c771-4255-bfcb-51f8d79e5e8d",
+    "geometry":{"type":"Point","coordinates":[3.81504477,43.61081189]},
+    "properties":{"name":"8"}},
+
+    {"type":"Feature",
+    "id":"89a825a7-fdcd-4316-ae89-dac1fc43159f",
+    "geometry":{"type":"Point","coordinates":[3.81582202,43.60979457]},
+    "properties":{"name":"7"}},
+    
+    {"type":"Feature",
+    "id":"a381b358-5401-4b1d-a077-015ed46b986a",
+    "geometry":{"type":"Point","coordinates":[3.8173477,43.61521087]},
+    "properties":{"name":"2"}},
+    
+    {"type":"Feature",
+    "id":"55d6320a-0db4-430a-84c6-a9cfbf021271",
+    "geometry":{"type":"Point","coordinates":[3.81050081,43.60977293]},
+    "properties":{"name":"5"}},
+    
+    {"type":"Feature",
+    "id":"2c9d6c70-6cda-4f58-a4c7-c4702136f02e",
+    "geometry":{"type":"Point","coordinates":[3.81798214,43.61980403]},
+    "properties":{"2":"","name":"1"}},
+    
+    {"type":"Feature",
+    "id":"1b419bd0-04ac-49ef-92f6-dc505faa3590",
+    "geometry":{"type":"Point","coordinates":[3.80792382,43.61237638]},
+    "properties":{"name":"4"}}]}
 
 export {myGeoJSON}
